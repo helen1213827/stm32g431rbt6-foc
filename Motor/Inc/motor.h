@@ -21,6 +21,12 @@ typedef struct
     float dutyA;
     float dutyB;
     float dutyC;
+
+    float valpha;
+    float vbeta;
+
+    float id_ref;
+    float iq_ref;
 }Motor_t;
 
 extern Motor_t motor;

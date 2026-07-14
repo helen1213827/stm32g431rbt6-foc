@@ -4997,35 +4997,125 @@ Discarded input sections
  .text          0x00000000        0x0 CMakeFiles/foc.dir/Motor/Src/motor.c.obj
  .data          0x00000000        0x0 CMakeFiles/foc.dir/Motor/Src/motor.c.obj
  .bss           0x00000000        0x0 CMakeFiles/foc.dir/Motor/Src/motor.c.obj
- .bss.motor     0x00000000       0x34 CMakeFiles/foc.dir/Motor/Src/motor.c.obj
- .debug_info    0x00000000       0xe2 CMakeFiles/foc.dir/Motor/Src/motor.c.obj
+ .bss.motor     0x00000000       0x44 CMakeFiles/foc.dir/Motor/Src/motor.c.obj
+ .debug_info    0x00000000      0x10e CMakeFiles/foc.dir/Motor/Src/motor.c.obj
  .debug_abbrev  0x00000000       0x83 CMakeFiles/foc.dir/Motor/Src/motor.c.obj
  .debug_aranges
                 0x00000000       0x18 CMakeFiles/foc.dir/Motor/Src/motor.c.obj
  .debug_macro   0x00000000       0x1b CMakeFiles/foc.dir/Motor/Src/motor.c.obj
  .debug_macro   0x00000000      0xaea CMakeFiles/foc.dir/Motor/Src/motor.c.obj
  .debug_line    0x00000000       0x6d CMakeFiles/foc.dir/Motor/Src/motor.c.obj
- .debug_str     0x00000000     0x2ed1 CMakeFiles/foc.dir/Motor/Src/motor.c.obj
+ .debug_str     0x00000000     0x2eec CMakeFiles/foc.dir/Motor/Src/motor.c.obj
  .comment       0x00000000       0x46 CMakeFiles/foc.dir/Motor/Src/motor.c.obj
  .ARM.attributes
                 0x00000000       0x34 CMakeFiles/foc.dir/Motor/Src/motor.c.obj
+ .group         0x00000000        0xc CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .group         0x00000000        0xc CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .group         0x00000000        0xc CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .group         0x00000000        0xc CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .group         0x00000000        0xc CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .group         0x00000000        0xc CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .group         0x00000000        0xc CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .group         0x00000000        0xc CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .group         0x00000000        0xc CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .group         0x00000000        0xc CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .group         0x00000000        0xc CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .group         0x00000000        0xc CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .group         0x00000000        0xc CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .group         0x00000000        0xc CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .group         0x00000000        0xc CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .group         0x00000000        0xc CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .group         0x00000000        0xc CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .group         0x00000000        0xc CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .group         0x00000000        0xc CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .group         0x00000000        0xc CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .group         0x00000000        0xc CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .group         0x00000000        0xc CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .group         0x00000000        0xc CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .group         0x00000000        0xc CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .group         0x00000000        0xc CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .group         0x00000000        0xc CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .group         0x00000000        0xc CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .group         0x00000000        0xc CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .group         0x00000000        0xc CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .group         0x00000000        0xc CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .group         0x00000000        0xc CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .group         0x00000000        0xc CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .group         0x00000000        0xc CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .group         0x00000000        0xc CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .group         0x00000000        0xc CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .group         0x00000000        0xc CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .group         0x00000000        0xc CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .group         0x00000000        0xc CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .group         0x00000000        0xc CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .group         0x00000000        0xc CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .group         0x00000000        0xc CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .group         0x00000000        0xc CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .group         0x00000000        0xc CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .group         0x00000000        0xc CMakeFiles/foc.dir/FOC/Src/foc.c.obj
  .group         0x00000000        0xc CMakeFiles/foc.dir/FOC/Src/foc.c.obj
  .text          0x00000000        0x0 CMakeFiles/foc.dir/FOC/Src/foc.c.obj
  .data          0x00000000        0x0 CMakeFiles/foc.dir/FOC/Src/foc.c.obj
  .bss           0x00000000        0x0 CMakeFiles/foc.dir/FOC/Src/foc.c.obj
  .bss.i_ab      0x00000000        0x8 CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .bss.v_ab      0x00000000        0x8 CMakeFiles/foc.dir/FOC/Src/foc.c.obj
  .bss.i_dq      0x00000000        0x8 CMakeFiles/foc.dir/FOC/Src/foc.c.obj
- .text.FOC_Run  0x00000000       0x68 CMakeFiles/foc.dir/FOC/Src/foc.c.obj
- .debug_info    0x00000000      0x200 CMakeFiles/foc.dir/FOC/Src/foc.c.obj
- .debug_abbrev  0x00000000       0xe2 CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .bss.pwm       0x00000000        0xc CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .text.FOC_Run  0x00000000       0xf8 CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .debug_info    0x00000000      0x344 CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .debug_abbrev  0x00000000       0xee CMakeFiles/foc.dir/FOC/Src/foc.c.obj
  .debug_aranges
                 0x00000000       0x20 CMakeFiles/foc.dir/FOC/Src/foc.c.obj
  .debug_rnglists
-                0x00000000       0x13 CMakeFiles/foc.dir/FOC/Src/foc.c.obj
- .debug_macro   0x00000000       0x43 CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+                0x00000000       0x14 CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .debug_macro   0x00000000      0x282 CMakeFiles/foc.dir/FOC/Src/foc.c.obj
  .debug_macro   0x00000000      0xaea CMakeFiles/foc.dir/FOC/Src/foc.c.obj
- .debug_line    0x00000000       0xf5 CMakeFiles/foc.dir/FOC/Src/foc.c.obj
- .debug_str     0x00000000     0x2f3c CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .debug_macro   0x00000000      0x16d CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .debug_macro   0x00000000       0x2e CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .debug_macro   0x00000000       0x28 CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .debug_macro   0x00000000       0x22 CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .debug_macro   0x00000000       0x8e CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .debug_macro   0x00000000       0x51 CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .debug_macro   0x00000000      0x103 CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .debug_macro   0x00000000       0x6a CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .debug_macro   0x00000000      0x1df CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .debug_macro   0x00000000       0x1c CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .debug_macro   0x00000000       0x22 CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .debug_macro   0x00000000       0xfb CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .debug_macro   0x00000000     0x1011 CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .debug_macro   0x00000000      0x11f CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .debug_macro   0x00000000    0x1138f CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .debug_macro   0x00000000       0x6d CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .debug_macro   0x00000000     0x3558 CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .debug_macro   0x00000000      0x190 CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .debug_macro   0x00000000       0x5c CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .debug_macro   0x00000000     0x141d CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .debug_macro   0x00000000      0x535 CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .debug_macro   0x00000000      0x1b6 CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .debug_macro   0x00000000      0x288 CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .debug_macro   0x00000000      0x41d CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .debug_macro   0x00000000      0x18b CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .debug_macro   0x00000000       0x43 CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .debug_macro   0x00000000      0x23d CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .debug_macro   0x00000000     0x1111 CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .debug_macro   0x00000000      0x72e CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .debug_macro   0x00000000      0x391 CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .debug_macro   0x00000000      0x211 CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .debug_macro   0x00000000      0x6bd CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .debug_macro   0x00000000      0x401 CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .debug_macro   0x00000000      0x107 CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .debug_macro   0x00000000       0x73 CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .debug_macro   0x00000000      0x234 CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .debug_macro   0x00000000      0x122 CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .debug_macro   0x00000000      0x3d1 CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .debug_macro   0x00000000      0xbda CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .debug_macro   0x00000000      0x47e CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .debug_macro   0x00000000      0x693 CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .debug_macro   0x00000000       0xa6 CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .debug_macro   0x00000000      0x306 CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .debug_macro   0x00000000       0xd0 CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .debug_line    0x00000000      0x751 CMakeFiles/foc.dir/FOC/Src/foc.c.obj
+ .debug_str     0x00000000    0xd813c CMakeFiles/foc.dir/FOC/Src/foc.c.obj
  .comment       0x00000000       0x46 CMakeFiles/foc.dir/FOC/Src/foc.c.obj
  .debug_frame   0x00000000       0x34 CMakeFiles/foc.dir/FOC/Src/foc.c.obj
  .ARM.attributes

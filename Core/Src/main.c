@@ -26,9 +26,14 @@
 #include "usb.h"
 #include "gpio.h"
 
+
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "foc.h"
+#include "current.h"
+#include "motor.h"
+#include "bsp_pwm.h"
+#include "bsp_adc.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -101,7 +106,15 @@ int main(void)
   MX_USART3_UART_Init();
   MX_USB_PCD_Init();
   /* USER CODE BEGIN 2 */
+  Current_Init();
 
+  FOC_Init();
+
+  BSP_ADC_Start();
+
+  Current_CalibrateOffset();
+
+  BSP_PWM_Start();
   /* USER CODE END 2 */
 
   /* Infinite loop */

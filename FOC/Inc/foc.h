@@ -5,6 +5,8 @@
 extern "C" {
 #endif
 
+void FOC_Init(void);
+
 void FOC_Run(void);
 
 #ifdef __cplusplus
