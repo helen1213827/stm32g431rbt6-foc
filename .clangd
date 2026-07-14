@@ -1,0 +1,17 @@
+CompileFlags:
+  Remove:
+    - -mcpu=*
+    - -mfpu=*
+    - -mfloat-abi=*
+    - -mthumb
+    - -fdata-sections
+    - -ffunction-sections
+
+Diagnostics:
+  Suppress:
+    - -Wunused-parameter
+    - -Wmissing-field-initializers
+    - unused-includes
+
+Index:
+  Background: Build
