@@ -27,6 +27,8 @@ typedef struct
 
     float id_ref;
     float iq_ref;
+
+    float speed;       /* 机械角速度 rad/s */
 }Motor_t;
 
 extern Motor_t motor;

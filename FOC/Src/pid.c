@@ -17,7 +17,8 @@ void PI_Init(PI_t *pi,
 
 float PI_Run(PI_t *pi,
              float ref,
-             float feedback)
+             float feedback,
+             float dt)
 {
     float error;
 
@@ -25,7 +26,7 @@ float PI_Run(PI_t *pi,
 
     error = ref - feedback;
 
-    pi->integral += error * pi->ki;
+    pi->integral += error * pi->ki * dt;
 
     if(pi->integral > pi->out_max)
         pi->integral = pi->out_max;

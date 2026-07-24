@@ -1,0 +1,6 @@
+/home/lily/foc/foc/build/CMakeFiles/foc.dir
+/home/lily/foc/foc/build/CMakeFiles/edit_cache.dir
+/home/lily/foc/foc/build/CMakeFiles/rebuild_cache.dir
+/home/lily/foc/foc/build/cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir
+/home/lily/foc/foc/build/cmake/stm32cubemx/CMakeFiles/edit_cache.dir
+/home/lily/foc/foc/build/cmake/stm32cubemx/CMakeFiles/rebuild_cache.dir

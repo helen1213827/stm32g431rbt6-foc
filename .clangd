@@ -1,11 +1,8 @@
 CompileFlags:
-  Remove:
-    - -mcpu=*
-    - -mfpu=*
-    - -mfloat-abi=*
-    - -mthumb
-    - -fdata-sections
-    - -ffunction-sections
+  Add:
+    - --target=arm-none-eabi
+    - -isystem/home/lily/toolchain/arm-none-eabi/include
+    - -isystem/home/lily/toolchain/lib/gcc/arm-none-eabi/15.2.1/include
 
 Diagnostics:
   Suppress:

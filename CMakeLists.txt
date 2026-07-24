@@ -47,13 +47,21 @@ target_sources(${CMAKE_PROJECT_NAME} PRIVATE
     # BSP sources
     ${CMAKE_CURRENT_SOURCE_DIR}/BSP/Src/bsp_adc.c
     ${CMAKE_CURRENT_SOURCE_DIR}/BSP/Src/bsp_pwm.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/BSP/Src/bsp_led.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/BSP/Src/bsp_encoder.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/BSP/Src/bsp_vofa.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/BSP/Src/uart_printf.c
     # Motor sources
     ${CMAKE_CURRENT_SOURCE_DIR}/Motor/Src/current.c
     ${CMAKE_CURRENT_SOURCE_DIR}/Motor/Src/motor.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/Motor/Src/angle.c
     # FOC sources
     ${CMAKE_CURRENT_SOURCE_DIR}/FOC/Src/foc.c
     ${CMAKE_CURRENT_SOURCE_DIR}/FOC/Src/clarke.c
     ${CMAKE_CURRENT_SOURCE_DIR}/FOC/Src/park.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/FOC/Src/inv_park.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/FOC/Src/svpwm.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/FOC/Src/pid.c
 )
 
 # Add include paths

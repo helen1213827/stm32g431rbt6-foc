@@ -1,5 +1,6 @@
 {
     "clangd.arguments": [
         "--query-driver=/home/lily/toolchain/bin/arm-none-eabi-*"
-    ]
+    ],
+    "cortex-debug.variableUseNaturalFormat": true
 }

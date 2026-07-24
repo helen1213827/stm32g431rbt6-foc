@@ -25,7 +25,8 @@ void PI_Init(PI_t *pi,
 
 float PI_Run(PI_t *pi,
              float ref,
-             float feedback);
+             float feedback,
+             float dt);
 
 #ifdef __cplusplus
 }
