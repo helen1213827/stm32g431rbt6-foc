@@ -74,6 +74,11 @@ uint16_t BSP_Encoder_ReadAngle(void)
 float BSP_Encoder_GetAngleRad(void)
 {
     uint16_t raw = BSP_Encoder_ReadAngle();
+    return BSP_Encoder_CountToRad(raw);
+}
+
+float BSP_Encoder_CountToRad(uint16_t raw)
+{
     return (float)raw / (float)KTH7823_ANGLE_MAX * 6.283185307179586f;
 }
 

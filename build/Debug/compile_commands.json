@@ -115,6 +115,12 @@
 },
 {
   "directory": "/home/lily/foc/foc/build/Debug",
+  "command": "/home/lily/toolchain/bin/arm-none-eabi-gcc -DDEBUG -DSTM32G431xx -DUSE_HAL_DRIVER -I/home/lily/foc/foc/BSP/Inc -I/home/lily/foc/foc/Motor/Inc -I/home/lily/foc/foc/FOC/Inc -I/home/lily/foc/foc/cmake/stm32cubemx/../../Core/Inc -I/home/lily/foc/foc/cmake/stm32cubemx/../../Drivers/STM32G4xx_HAL_Driver/Inc -I/home/lily/foc/foc/cmake/stm32cubemx/../../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I/home/lily/foc/foc/cmake/stm32cubemx/../../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I/home/lily/foc/foc/cmake/stm32cubemx/../../Drivers/CMSIS/Include  -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -Wall -fdata-sections -ffunction-sections -O0 -g3 -std=gnu11 -o CMakeFiles/foc.dir/BSP/Src/bsp_cmd.c.obj -c /home/lily/foc/foc/BSP/Src/bsp_cmd.c",
+  "file": "/home/lily/foc/foc/BSP/Src/bsp_cmd.c",
+  "output": "CMakeFiles/foc.dir/BSP/Src/bsp_cmd.c.obj"
+},
+{
+  "directory": "/home/lily/foc/foc/build/Debug",
   "command": "/home/lily/toolchain/bin/arm-none-eabi-gcc -DDEBUG -DSTM32G431xx -DUSE_HAL_DRIVER -I/home/lily/foc/foc/BSP/Inc -I/home/lily/foc/foc/Motor/Inc -I/home/lily/foc/foc/FOC/Inc -I/home/lily/foc/foc/cmake/stm32cubemx/../../Core/Inc -I/home/lily/foc/foc/cmake/stm32cubemx/../../Drivers/STM32G4xx_HAL_Driver/Inc -I/home/lily/foc/foc/cmake/stm32cubemx/../../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I/home/lily/foc/foc/cmake/stm32cubemx/../../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I/home/lily/foc/foc/cmake/stm32cubemx/../../Drivers/CMSIS/Include  -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -Wall -fdata-sections -ffunction-sections -O0 -g3 -std=gnu11 -o CMakeFiles/foc.dir/BSP/Src/uart_printf.c.obj -c /home/lily/foc/foc/BSP/Src/uart_printf.c",
   "file": "/home/lily/foc/foc/BSP/Src/uart_printf.c",
   "output": "CMakeFiles/foc.dir/BSP/Src/uart_printf.c.obj"
@@ -172,6 +178,24 @@
   "command": "/home/lily/toolchain/bin/arm-none-eabi-gcc -DDEBUG -DSTM32G431xx -DUSE_HAL_DRIVER -I/home/lily/foc/foc/BSP/Inc -I/home/lily/foc/foc/Motor/Inc -I/home/lily/foc/foc/FOC/Inc -I/home/lily/foc/foc/cmake/stm32cubemx/../../Core/Inc -I/home/lily/foc/foc/cmake/stm32cubemx/../../Drivers/STM32G4xx_HAL_Driver/Inc -I/home/lily/foc/foc/cmake/stm32cubemx/../../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I/home/lily/foc/foc/cmake/stm32cubemx/../../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I/home/lily/foc/foc/cmake/stm32cubemx/../../Drivers/CMSIS/Include  -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -Wall -fdata-sections -ffunction-sections -O0 -g3 -std=gnu11 -o CMakeFiles/foc.dir/FOC/Src/pid.c.obj -c /home/lily/foc/foc/FOC/Src/pid.c",
   "file": "/home/lily/foc/foc/FOC/Src/pid.c",
   "output": "CMakeFiles/foc.dir/FOC/Src/pid.c.obj"
+},
+{
+  "directory": "/home/lily/foc/foc/build/Debug",
+  "command": "/home/lily/toolchain/bin/arm-none-eabi-gcc -DDEBUG -DSTM32G431xx -DUSE_HAL_DRIVER -I/home/lily/foc/foc/BSP/Inc -I/home/lily/foc/foc/Motor/Inc -I/home/lily/foc/foc/FOC/Inc -I/home/lily/foc/foc/cmake/stm32cubemx/../../Core/Inc -I/home/lily/foc/foc/cmake/stm32cubemx/../../Drivers/STM32G4xx_HAL_Driver/Inc -I/home/lily/foc/foc/cmake/stm32cubemx/../../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I/home/lily/foc/foc/cmake/stm32cubemx/../../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I/home/lily/foc/foc/cmake/stm32cubemx/../../Drivers/CMSIS/Include  -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -Wall -fdata-sections -ffunction-sections -O0 -g3 -std=gnu11 -o CMakeFiles/foc.dir/FOC/Src/current_loop.c.obj -c /home/lily/foc/foc/FOC/Src/current_loop.c",
+  "file": "/home/lily/foc/foc/FOC/Src/current_loop.c",
+  "output": "CMakeFiles/foc.dir/FOC/Src/current_loop.c.obj"
+},
+{
+  "directory": "/home/lily/foc/foc/build/Debug",
+  "command": "/home/lily/toolchain/bin/arm-none-eabi-gcc -DDEBUG -DSTM32G431xx -DUSE_HAL_DRIVER -I/home/lily/foc/foc/BSP/Inc -I/home/lily/foc/foc/Motor/Inc -I/home/lily/foc/foc/FOC/Inc -I/home/lily/foc/foc/cmake/stm32cubemx/../../Core/Inc -I/home/lily/foc/foc/cmake/stm32cubemx/../../Drivers/STM32G4xx_HAL_Driver/Inc -I/home/lily/foc/foc/cmake/stm32cubemx/../../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I/home/lily/foc/foc/cmake/stm32cubemx/../../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I/home/lily/foc/foc/cmake/stm32cubemx/../../Drivers/CMSIS/Include  -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -Wall -fdata-sections -ffunction-sections -O0 -g3 -std=gnu11 -o CMakeFiles/foc.dir/FOC/Src/speed_loop.c.obj -c /home/lily/foc/foc/FOC/Src/speed_loop.c",
+  "file": "/home/lily/foc/foc/FOC/Src/speed_loop.c",
+  "output": "CMakeFiles/foc.dir/FOC/Src/speed_loop.c.obj"
+},
+{
+  "directory": "/home/lily/foc/foc/build/Debug",
+  "command": "/home/lily/toolchain/bin/arm-none-eabi-gcc -DDEBUG -DSTM32G431xx -DUSE_HAL_DRIVER -I/home/lily/foc/foc/BSP/Inc -I/home/lily/foc/foc/Motor/Inc -I/home/lily/foc/foc/FOC/Inc -I/home/lily/foc/foc/cmake/stm32cubemx/../../Core/Inc -I/home/lily/foc/foc/cmake/stm32cubemx/../../Drivers/STM32G4xx_HAL_Driver/Inc -I/home/lily/foc/foc/cmake/stm32cubemx/../../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I/home/lily/foc/foc/cmake/stm32cubemx/../../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I/home/lily/foc/foc/cmake/stm32cubemx/../../Drivers/CMSIS/Include  -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -Wall -fdata-sections -ffunction-sections -O0 -g3 -std=gnu11 -o CMakeFiles/foc.dir/FOC/Src/position_loop.c.obj -c /home/lily/foc/foc/FOC/Src/position_loop.c",
+  "file": "/home/lily/foc/foc/FOC/Src/position_loop.c",
+  "output": "CMakeFiles/foc.dir/FOC/Src/position_loop.c.obj"
 },
 {
   "directory": "/home/lily/foc/foc/build/Debug",

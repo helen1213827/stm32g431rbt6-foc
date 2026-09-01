@@ -12,12 +12,12 @@
             "configFiles": [
                 "${workspaceFolder}/openocd.cfg"
             ],
-            "svdFile": "${workspaceFolder}/.vscode/STM32G431.svd",
+            "svdFile": "${workspaceFolder}/.vscode/STM32G431xx.svd",
             "preLaunchTask": "CMake: build",
             "runToEntryPoint": "main",
             "liveWatch": {
                 "enabled": true,
-                "samplesPerSecond": 4
+                "samplesPerSecond": 30
             }
         },
         {
@@ -31,14 +31,16 @@
             "configFiles": [
                 "${workspaceFolder}/openocd.cfg"
             ],
-            "svdFile": "${workspaceFolder}/.vscode/STM32G431.svd",
+            "svdFile": "${workspaceFolder}/.vscode/STM32G431xx.svd",
             "runToEntryPoint": "main",
             "postLaunchCommands": [
+                "set var g_iq_ref = -0.15",
+                "set var g_speed_ref = 10.0",
                 "continue"
             ],
             "liveWatch": {
                 "enabled": true,
-                "samplesPerSecond": 4
+                "samplesPerSecond": 30
             }
         }
     ]

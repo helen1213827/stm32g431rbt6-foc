@@ -25,10 +25,8 @@ void Angle_SetMode(AngleMode_t m)
     mode = m;
 }
 
-void Angle_Update(float dt)
+void Angle_Update(float mech, float dt)
 {
-    float mech = BSP_Encoder_GetAngleRad();
-
     if (mode == ANGLE_MODE_ENCODER)
     {
         /* 编码器模式: 负号因安装反向 */
@@ -71,6 +69,25 @@ void Angle_SetOffset(float offset)
 void Angle_ZeroCurrent(void)
 {
     theta_offset = BSP_Encoder_GetAngleRad();
+}
+
+/**
+ * @brief 用当前机械角计算电零点偏移 (取模 2π/P)
+ *
+ * 让 theta = -(mech - offset)*P 在吸附位置恰好为 0:
+ *   offset ≡ mech (mod 2π/P)
+ * 取模后消除 180° 歧义 (id>0 方向唯一).
+ */
+float Angle_CalibrateOffset(void)
+{
+    float mech   = BSP_Encoder_GetAngleRad();
+    float period = TWO_PI / POLE_PAIRS;
+
+    theta_offset = fmodf(mech, period);
+    if (theta_offset < 0.0f)
+        theta_offset += period;
+
+    return theta_offset;
 }
 
 void Angle_SetSpeed(float omega)

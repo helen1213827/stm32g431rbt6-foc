@@ -50,6 +50,7 @@ target_sources(${CMAKE_PROJECT_NAME} PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/BSP/Src/bsp_led.c
     ${CMAKE_CURRENT_SOURCE_DIR}/BSP/Src/bsp_encoder.c
     ${CMAKE_CURRENT_SOURCE_DIR}/BSP/Src/bsp_vofa.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/BSP/Src/bsp_cmd.c
     ${CMAKE_CURRENT_SOURCE_DIR}/BSP/Src/uart_printf.c
     # Motor sources
     ${CMAKE_CURRENT_SOURCE_DIR}/Motor/Src/current.c
@@ -62,6 +63,11 @@ target_sources(${CMAKE_PROJECT_NAME} PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/FOC/Src/inv_park.c
     ${CMAKE_CURRENT_SOURCE_DIR}/FOC/Src/svpwm.c
     ${CMAKE_CURRENT_SOURCE_DIR}/FOC/Src/pid.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/FOC/Src/current_loop.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/FOC/Src/speed_loop.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/FOC/Src/position_loop.c
+
+
 )
 
 # Add include paths

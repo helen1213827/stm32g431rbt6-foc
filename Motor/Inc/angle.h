@@ -28,10 +28,13 @@ void Angle_Init(void);
 void Angle_SetMode(AngleMode_t mode);
 
 /**
- * @brief 每次 FOC 循环调用，从编码器更新电角度
+ * @brief 每次 FOC 循环调用，用机械角更新电角度
+ *
+ * 编码器值由调用方读取后传入（避免 SPI 多线程访问冲突）.
+ * @param mech 机械角 (rad)
  * @param dt 控制周期（秒），编码器模式下未使用
  */
-void Angle_Update(float dt);
+void Angle_Update(float mech, float dt);
 
 /**
  * @brief 设置电零点偏移
@@ -43,6 +46,15 @@ void Angle_SetOffset(float offset);
  * @brief 将当前编码器位置标定为电零点
  */
 void Angle_ZeroCurrent(void);
+
+/**
+ * @brief 用当前机械角计算电零点偏移 (取模 2π/P)
+ *
+ * 在对齐模式下电机吸附到 theta=0 后调用,
+ * 使 theta = -(mech - offset)*P 在吸附位置恰好为 0.
+ * @return 校准后的偏移量 (rad)
+ */
+float Angle_CalibrateOffset(void);
 
 /**
  * @brief 设置目标电角速度（开环备用）

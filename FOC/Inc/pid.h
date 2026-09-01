@@ -11,6 +11,7 @@ typedef struct
     float ki;
 
     float integral;
+    float int_limit;   /* 积分独立限幅 (默认=out_max, 可单独收紧) */
 
     float out_max;
     float out_min;

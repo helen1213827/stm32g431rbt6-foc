@@ -38,6 +38,7 @@
 #include "angle.h"
 #include "bsp_encoder.h"
 #include "bsp_vofa.h"
+#include "bsp_cmd.h"
 #include "stdio.h"
 /* USER CODE END Includes */
 
@@ -127,10 +128,9 @@ int main(void)
   setbuf(stdout, NULL);
 
   /* 电压开环, 用编码器换向 */
+  BSP_CMD_Init();
   Angle_SetMode(ANGLE_MODE_ENCODER);
-
-  motor.id_ref = 0.0f;
-  motor.iq_ref = 0.0f;    /* 还没用到, 先置 0 */
+  HAL_TIM_Base_Start_IT(&htim6);  
 
   /* USER CODE END 2 */
 
@@ -140,20 +140,23 @@ int main(void)
   {
     /* USER CODE END WHILE */
 
-    /* USER CODE BEGIN 3 */
-    static uint32_t tick = 0;
-    BSP_LED_Heartbeat();
-    FOC_Run();
-    HAL_Delay(1);
-
-    tick++;
-    if (tick >= 500) {
-        tick = 0;
-        printf("spd:%.1f  id:%.3f  iq:%.3f  enc:%u  off:%.3f\r\n",
-               motor.speed,
-               motor.id, motor.iq,
-               BSP_Encoder_ReadAngle(),
-               Angle_GetOffset());
+    BSP_CMD_Poll();
+/* USER CODE BEGIN 3 */
+    
+    //BSP_LED_Heartbeat();
+    static uint32_t last_print = 0;
+    if (HAL_GetTick() - last_print >= 200){
+        last_print = HAL_GetTick();
+        /* 编码器用 ISR 缓存的 g_enc_cache, 主循环不直接访问 SPI (避免冲突) */
+        float mech = (float)g_enc_cache * 0.0000958738f;  /* /65536 * 2π */
+        /* 位置误差: 环绕修正后的最短路径 */
+        float perr_f = g_pos_ref - (float)g_enc_cache;
+        if      (perr_f >  32768.0f) perr_f -= 65536.0f;
+        else if (perr_f < -32768.0f) perr_f += 65536.0f;
+        printf("mode:%d mech:%.3f spd:%.2f pos:%u perr:%d pspd:%.2f iqr:%+.2f slr:%+.2f iq:%.3f vq:%.2f enc:%u\r\n",
+       (int)g_foc_mode, mech, motor.speed,
+       (unsigned int)g_pos_ref, (int)perr_f, FOC_GetPosSpeedRef(),
+       g_iq_ref_cmd, g_sl_iq_ref_out, motor.iq, motor.vq, g_enc_cache);
     }
   }
   /* USER CODE END 3 */
@@ -170,7 +173,7 @@ void SystemClock_Config(void)
 
   /** Configure the main internal regulator output voltage
   */
-  HAL_PWREx_ControlVoltageScaling(PWR_REGULATOR_VOLTAGE_SCALE1);
+  HAL_PWREx_ControlVoltageScaling(PWR_REGULATOR_VOLTAGE_SCALE1_BOOST);
 
   /** Initializes the RCC Oscillators according to the specified parameters
   * in the RCC_OscInitTypeDef structure.
@@ -181,8 +184,8 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.HSI48State = RCC_HSI48_ON;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
-  RCC_OscInitStruct.PLL.PLLM = RCC_PLLM_DIV2;
-  RCC_OscInitStruct.PLL.PLLN = 36;
+  RCC_OscInitStruct.PLL.PLLM = RCC_PLLM_DIV4;
+  RCC_OscInitStruct.PLL.PLLN = 85;
   RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
   RCC_OscInitStruct.PLL.PLLQ = RCC_PLLQ_DIV4;
   RCC_OscInitStruct.PLL.PLLR = RCC_PLLR_DIV2;
@@ -207,7 +210,13 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
-
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+{
+    if (htim->Instance == TIM6)
+    {
+        FOC_Run();
+    }
+}
 /* USER CODE END 4 */
 
 /**

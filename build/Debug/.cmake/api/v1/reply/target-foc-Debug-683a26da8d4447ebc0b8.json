@@ -43,7 +43,7 @@
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 68,
+				"line" : 74,
 				"parent" : 0
 			},
 			{
@@ -157,7 +157,11 @@
 				25,
 				26,
 				27,
-				28
+				28,
+				29,
+				30,
+				31,
+				32
 			]
 		},
 		{
@@ -292,7 +296,11 @@
 				25,
 				26,
 				27,
-				28
+				28,
+				29,
+				30,
+				31,
+				32
 			]
 		},
 		{
@@ -306,10 +314,6 @@
 			"name" : "Object Libraries",
 			"sourceIndexes" : 
 			[
-				29,
-				30,
-				31,
-				32,
 				33,
 				34,
 				35,
@@ -332,7 +336,11 @@
 				52,
 				53,
 				54,
-				55
+				55,
+				56,
+				57,
+				58,
+				59
 			]
 		}
 	],
@@ -455,6 +463,12 @@
 		{
 			"backtrace" : 6,
 			"compileGroupIndex" : 0,
+			"path" : "BSP/Src/bsp_cmd.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 6,
+			"compileGroupIndex" : 0,
 			"path" : "BSP/Src/uart_printf.c",
 			"sourceGroupIndex" : 0
 		},
@@ -510,6 +524,24 @@
 			"backtrace" : 6,
 			"compileGroupIndex" : 0,
 			"path" : "FOC/Src/pid.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 6,
+			"compileGroupIndex" : 0,
+			"path" : "FOC/Src/current_loop.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 6,
+			"compileGroupIndex" : 0,
+			"path" : "FOC/Src/speed_loop.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 6,
+			"compileGroupIndex" : 0,
+			"path" : "FOC/Src/position_loop.c",
 			"sourceGroupIndex" : 0
 		},
 		{

@@ -66,6 +66,12 @@ uint16_t BSP_Encoder_ReadAngle(void);
  */
 float BSP_Encoder_GetAngleRad(void);
 
+/**
+ * @brief 16-bit 计数值 → 弧度 (0~65535 → 0~2π)
+ * @param raw 编码器原始计数值
+ */
+float BSP_Encoder_CountToRad(uint16_t raw);
+
 #ifdef __cplusplus
 }
 #endif

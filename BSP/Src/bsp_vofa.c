@@ -25,6 +25,9 @@ extern UART_HandleTypeDef huart3;
 static uint8_t  vofa_buf[VOFA_MAX_CHANNELS * 4 + 4];
 static uint8_t  vofa_tail[4] = { 0x00, 0x00, 0x80, 0x7F };
 
+/* VOFA 波形模式开关: 1=发 JustFloat 帧(主循环), 0=文本打印 */
+uint8_t g_vofa = 0;
+
 /**
  * @brief 初始化 VOFA
  */

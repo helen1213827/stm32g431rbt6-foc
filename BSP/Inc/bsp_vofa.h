@@ -27,6 +27,9 @@ extern "C" {
 /** 单帧最大通道数 */
 #define VOFA_MAX_CHANNELS  16
 
+/** VOFA 波形模式开关 (1=发送 JustFloat 帧, 0=普通文本打印) */
+extern uint8_t g_vofa;
+
 /**
  * @brief 初始化 VOFA 通信
  * @note  USART3 已在 CubeMX 中初始化，此函数预留扩展
