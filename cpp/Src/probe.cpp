@@ -1,0 +1,1 @@
+namespace foc { int dummy; }

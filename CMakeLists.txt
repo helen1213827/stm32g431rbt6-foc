@@ -12,6 +12,10 @@ set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_C_EXTENSIONS ON)
 
+# ★ 新增：启用 C++
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS ON)
 
 # Define the build type
 if(NOT CMAKE_BUILD_TYPE)
@@ -29,7 +33,7 @@ project(${CMAKE_PROJECT_NAME})
 message("Build type: " ${CMAKE_BUILD_TYPE})
 
 # Enable CMake support for ASM and C languages
-enable_language(C ASM)
+enable_language(C CXX ASM)
 
 # Create an executable object type
 add_executable(${CMAKE_PROJECT_NAME})
@@ -66,6 +70,8 @@ target_sources(${CMAKE_PROJECT_NAME} PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/FOC/Src/current_loop.c
     ${CMAKE_CURRENT_SOURCE_DIR}/FOC/Src/speed_loop.c
     ${CMAKE_CURRENT_SOURCE_DIR}/FOC/Src/position_loop.c
+    # C++ 重构核心（逐步加入）
+    ${CMAKE_CURRENT_SOURCE_DIR}/cpp/Src/pid.cpp
 
 
 )
@@ -76,6 +82,7 @@ target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/BSP/Inc
     ${CMAKE_CURRENT_SOURCE_DIR}/Motor/Inc
     ${CMAKE_CURRENT_SOURCE_DIR}/FOC/Inc
+    ${CMAKE_CURRENT_SOURCE_DIR}/cpp/Inc
 )
 
 # Add project symbols (macros)
