@@ -1,0 +1,12 @@
+# ===== 构建产物（CMake / Ninja / 目标文件）=====
+build/
+
+# ===== clangd 索引缓存 =====
+.cache/
+
+# ===== 生成的编译数据库 =====
+compile_commands.json
+
+# ===== 编辑器 / 备份垃圾文件 =====
+.vscode/*.bak*
+*.bak-*
