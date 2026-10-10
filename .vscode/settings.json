@@ -1,6 +1,10 @@
 {
-    "clangd.arguments": [
-        "--query-driver=/home/lily/toolchain/bin/arm-none-eabi-*"
-    ],
-    "cortex-debug.variableUseNaturalFormat": true
+    "cortex-debug.variableUseNaturalFormat": true,
+    "C_Cpp.default.compileCommands": "${workspaceFolder}/compile_commands.json",
+    "C_Cpp.intelliSenseUpdateDelay": 1500,
+    "C_Cpp.errorSquiggles": "disabled",
+    "files.watcherExclude": {
+        "**/build/**": true,
+        "**/.git/**": true
+    }
 }

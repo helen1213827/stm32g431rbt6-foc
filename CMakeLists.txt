@@ -62,6 +62,7 @@ target_sources(${CMAKE_PROJECT_NAME} PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/Motor/Src/angle.c
     # FOC sources
     ${CMAKE_CURRENT_SOURCE_DIR}/FOC/Src/foc.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/FOC/Src/foc_params.c
     ${CMAKE_CURRENT_SOURCE_DIR}/FOC/Src/clarke.c
     ${CMAKE_CURRENT_SOURCE_DIR}/FOC/Src/park.c
     ${CMAKE_CURRENT_SOURCE_DIR}/FOC/Src/inv_park.c

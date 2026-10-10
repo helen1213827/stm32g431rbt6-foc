@@ -2,42 +2,25 @@
 #include "pid.h"
 #include <stdbool.h>
 
-/* 在线调参安全限幅: 防止误设巨大/负增益导致跑飞 */
-#define SPD_KP_MAX  2.0f
-#define SPD_KI_MAX  0.5f
+/* 在线调参安全限幅: 防止误设巨大/负增益导致跑飞。
+ * Ki 是连续域积分增益 (integral += err*ki*dt), 速度环量级约 0.01~5,
+ * 原来的上限 0.5 会限制调参范围。 */
+#define SPD_KP_MAX  20.0f
+#define SPD_KI_MAX  50.0f
 
-void SpeedLoop_Init(SpeedLoop_t *sl, float kp, float ki, float out_limit, float lpf_alpha)
+void SpeedLoop_Init(SpeedLoop_t *sl, float kp, float ki, float out_limit)
 {
     PI_Init(&sl->pi, kp, ki, -out_limit, out_limit);
     sl->speed = 0.0f;
     sl->speed_raw = 0.0f;
     sl->iq_ref = 0.0f;
-    sl->alpha = lpf_alpha;
-    sl->last_enc = 0;
-    sl->first_run = true;
     sl->enabled = true;
-
 }
 
-void SpeedLoop_Run(SpeedLoop_t *sl, float speed_ref, float enc_raw, float dt)
+void SpeedLoop_Run(SpeedLoop_t *sl, float speed_ref, float speed_fb, float dt)
 {
-    /* 首采样: 只记录起始位置, 不计算速度 */
-    if (sl->first_run)
-    {
-        sl->last_enc = enc_raw;
-        sl->first_run = false;
-        sl->iq_ref = 0.0f;
-        return;
-    }
-
-    int32_t  delta = (int32_t)enc_raw - (int32_t)sl->last_enc;
-    if      (delta >  32767) delta -= 65536;
-    else if (delta < -32768) delta += 65536;
-    if (delta >= -3000 && delta <= 3000) sl->last_enc = enc_raw;
-
-    sl->speed_raw = delta *(6.283185f/65536.0f)/dt;
-
-    sl->speed = sl->speed * (1.0f - sl->alpha) + sl->speed_raw * sl->alpha;
+    sl->speed_raw = speed_fb;
+    sl->speed     = speed_fb;
 
     if (!sl->enabled) { sl->iq_ref = 0.0f; return; }
     sl->iq_ref = PI_Run(&sl->pi, speed_ref, sl->speed, dt);
@@ -50,10 +33,23 @@ void SpeedLoop_SetGains(SpeedLoop_t *sl, float kp, float ki)
     if (ki >= 0.0f) sl->pi.ki = (ki > SPD_KI_MAX) ? SPD_KI_MAX : ki;
 }
 
+/* 设置速度环输出限幅 (即最大 iq 指令, A)。
+ * 这一层直接决定机器能给出多大加速度: a_max = Kt/J × i_max。
+ * 参考轨迹的加速度必须小于 a_max, 否则环路必然饱和 → 极限环。 */
+void SpeedLoop_SetLimit(SpeedLoop_t *sl, float out_limit)
+{
+    if (out_limit <= 0.0f) return;
+
+    sl->pi.out_max =  out_limit;
+    sl->pi.out_min = -out_limit;
+
+    /* 积分限幅不能超过输出限幅, 否则积分单独就能把输出顶满 */
+    if (sl->pi.int_limit >  out_limit) sl->pi.int_limit =  out_limit;
+    if (sl->pi.int_limit < -out_limit) sl->pi.int_limit = -out_limit;
+}
+
 void SpeedLoop_Reset(SpeedLoop_t *sl)
 {
     sl->pi.integral = 0;
     sl->iq_ref = 0;
-    sl->last_enc = 0;
-    sl->first_run = true;
 }

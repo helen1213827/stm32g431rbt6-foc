@@ -1,12 +1,15 @@
 #include "bsp_led.h"
 #include "main.h"
+#include "foc.h"
 
 /* 心跳灯：每 500ms 翻转一次（在 main while 中配合 HAL_Delay 调用） */
 static uint32_t heartbeat_tick = 0;
 
-/* FOC 循环指示：每 250 次 FOC 翻转一次 → 2Hz @ 1kHz FOC */
-#define FOC_LED_DIVIDER 250
-static uint16_t foc_tick_count = 0;
+/* FOC 循环指示：每 250ms 翻转一次 (2Hz)。
+ * 由 FOC_FREQ_HZ 派生 —— 改控制频率时不用再动这里。 */
+#define FOC_LED_FLIP_MS   250U
+#define FOC_LED_DIVIDER   (FOC_LED_FLIP_MS * FOC_FREQ_HZ / 1000U)
+static uint32_t foc_tick_count = 0;
 
 void BSP_LED_Init(void)
 {

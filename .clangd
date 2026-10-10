@@ -1,8 +1,14 @@
 CompileFlags:
   Add:
     - --target=arm-none-eabi
-    - -isystem/home/lily/toolchain/arm-none-eabi/include
+    # C++ 标准库目录必须先于 newlib C 目录，
+    # 否则 cmath 里的 #include_next <math.h> 会失败
+    - -isystem/home/lily/toolchain/arm-none-eabi/include/c++/15.2.1
+    - -isystem/home/lily/toolchain/arm-none-eabi/include/c++/15.2.1/arm-none-eabi
+    - -isystem/home/lily/toolchain/arm-none-eabi/include/c++/15.2.1/backward
     - -isystem/home/lily/toolchain/lib/gcc/arm-none-eabi/15.2.1/include
+    - -isystem/home/lily/toolchain/lib/gcc/arm-none-eabi/15.2.1/include-fixed
+    - -isystem/home/lily/toolchain/arm-none-eabi/include
 
 Diagnostics:
   Suppress:

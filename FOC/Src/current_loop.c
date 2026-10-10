@@ -1,9 +1,12 @@
 #include "current_loop.h"
 #include "pid.h"
 
-/* 在线调参安全限幅: 防止误设巨大/负增益导致跑飞 */
-#define CUR_KP_MAX  20.0f
-#define CUR_KI_MAX  200.0f
+/* 在线调参安全限幅: 防止误设巨大/负增益导致跑飞。
+ * 注意: Ki 是连续域积分增益 (integral += err*ki*dt),
+ * 正确值约为 ωc·R, 对有刷小电机的量级在 1e3~1e4,
+ * 原来的 CUR_KI_MAX=200 会把整定好的 Ki 直接截断。 */
+#define CUR_KP_MAX  200.0f
+#define CUR_KI_MAX  200000.0f
 
 void CurrentLoop_Init(CurrentLoop_t *cl,
 float kp, float ki, float out_limit)
@@ -16,14 +19,15 @@ float kp, float ki, float out_limit)
 }
 
 void CurrentLoop_Run(CurrentLoop_t *cl, float id_ref, float iq_ref,
-float id_fb, float iq_fb, float dt)
+float id_fb, float iq_fb, float vd_ff, float vq_ff, float dt)
 {
     if (!cl->enabled)  { cl->vd = 0.0f; cl->vq = 0.0f; return;}
 
-    cl->vd = PI_Run(&cl->pi_d, id_ref, id_fb, dt);
-    cl->vq = PI_Run(&cl->pi_q, iq_ref, iq_fb, dt);
-
-
+    /* PI 只负责残差; 主要负担 (反电动势 + dq 交叉耦合) 由前馈承担,
+     * 这样 Ki 不必靠"硬顶"来消除稳态误差, 也就能调得小且稳。
+     * 注意 PI 的抗饱和限幅仍按 PI 输出考核, 前馈不会把积分顶满。 */
+    cl->vd = PI_Run(&cl->pi_d, id_ref, id_fb, dt) + vd_ff;
+    cl->vq = PI_Run(&cl->pi_q, iq_ref, iq_fb, dt) + vq_ff;
 }
 
 void CurrentLoop_SetGains(CurrentLoop_t *cl,float d_kp,float d_ki, float q_kp,float q_ki )

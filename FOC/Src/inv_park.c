@@ -1,13 +1,11 @@
 #include "inv_park.h"
-#include <math.h>
 
+/* 注意: 传入的是 theta 的 sin/cos (与 Park_Run 共用同一组, 见 park.c) */
 void InvPark_Run(const DQ_t *in,
-                 float theta,
+                 float s,
+                 float c,
                  AlphaBeta_t *out)
 {
-    float s = sinf(theta);
-    float c = cosf(theta);
-
     out->alpha =
         in->d * c -
         in->q * s;

@@ -104,3 +104,8 @@ float Angle_GetOffset(void)
 {
     return theta_offset;
 }
+
+float Angle_MechToElecSpeed(float mech_speed)
+{
+    return mech_speed * (float)POLE_PAIRS;
+}

@@ -39,6 +39,10 @@ void Current_CalibrateOffset(void)
 
 void Current_Update(void)
 {
+    /* 注入组 EOC 中断已在 BSP_ADC_Start() 中关闭(省 20kHz 中断开销),
+     * 这里在读取前清一次标志, 行为与旧的 ISR 版一致 */
+    BSP_ADC_ClearFlags();
+
     current.raw_a = BSP_ADC_GetPhaseA();
     current.raw_b = BSP_ADC_GetPhaseB();
     current.raw_c = BSP_ADC_GetPhaseC();

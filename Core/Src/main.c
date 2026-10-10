@@ -140,23 +140,20 @@ int main(void)
   {
     /* USER CODE END WHILE */
 
-    BSP_CMD_Poll();
-/* USER CODE BEGIN 3 */
+    /* USER CODE BEGIN 3 */
     
     //BSP_LED_Heartbeat();
+
+    /* 串口命令轮询: 必须放在 USER CODE 区内!
+     * (原来放在 USER CODE 外面, 被 CubeMX 重新生成代码时删掉了 → 命令全失效) */
+    BSP_CMD_Poll();
+
+    /* 调试数据打印: 分组由 dbg 命令切换, 周期由 prd 命令设置 (默认 500ms) */
     static uint32_t last_print = 0;
-    if (HAL_GetTick() - last_print >= 200){
+    if (HAL_GetTick() - last_print >= g_prd_ms)
+    {
         last_print = HAL_GetTick();
-        /* 编码器用 ISR 缓存的 g_enc_cache, 主循环不直接访问 SPI (避免冲突) */
-        float mech = (float)g_enc_cache * 0.0000958738f;  /* /65536 * 2π */
-        /* 位置误差: 环绕修正后的最短路径 */
-        float perr_f = g_pos_ref - (float)g_enc_cache;
-        if      (perr_f >  32768.0f) perr_f -= 65536.0f;
-        else if (perr_f < -32768.0f) perr_f += 65536.0f;
-        printf("mode:%d mech:%.3f spd:%.2f pos:%u perr:%d pspd:%.2f iqr:%+.2f slr:%+.2f iq:%.3f vq:%.2f enc:%u\r\n",
-       (int)g_foc_mode, mech, motor.speed,
-       (unsigned int)g_pos_ref, (int)perr_f, FOC_GetPosSpeedRef(),
-       g_iq_ref_cmd, g_sl_iq_ref_out, motor.iq, motor.vq, g_enc_cache);
+        BSP_CMD_PrintDebug();
     }
   }
   /* USER CODE END 3 */

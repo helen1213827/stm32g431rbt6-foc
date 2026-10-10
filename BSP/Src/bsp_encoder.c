@@ -16,6 +16,9 @@
 
 #include "bsp_encoder.h"
 #include "spi.h"
+#include <stdint.h>
+
+extern SPI_HandleTypeDef hspi1;
 
 /* ===================================================================
  * CS 引脚宏
@@ -35,36 +38,91 @@ void BSP_Encoder_Init(void)
      * 这里只做 CS 引脚初始化
      */
     ENC_CS_HIGH();
+
+    /* RX FIFO 门限 = 1 字节 (与 HAL 的 8-bit 接收路径一致),
+     * 这样寄存器级逐字节读写才能每字节都等到 RXNE */
+    SET_BIT(hspi1.Instance->CR2, SPI_RXFIFO_THRESHOLD);
 }
 
 /* ===================================================================
- * 读取原始角度
+ * 读取原始角度 (寄存器级, 不依赖 HAL)
+ *
+ * 在 1kHz FOC 中断里调用, 所以:
+ *   1) 不能用 HAL_SPI_TransmitReceive(HAL_MAX_DELAY) —— 它内部会加锁,
+ *      查状态机, 并且用 HAL_GetTick() 做超时; SPI 一旦异常会死等,
+ *      把整个 FOC 中断挂死 (PWM 停在旧占空比)。
+ *   2) 所有等待都带自旋上限, 超时就返回上一次有效值, 中断永不死等。
  * =================================================================== */
+
+#define ENC_SPI_GUARD   3000u   /* 单次等待最大自旋次数 (~18us @170MHz) */
+
+static uint16_t enc_last_raw = 0;   /* 上一次有效读数 (超时兜底) */
 
 uint16_t BSP_Encoder_ReadAngle(void)
 {
-    /*
-     * 16-bit SPI 帧 = 2 字节
-     * 因为 STM32 是小端，我们用数组保证字节顺序:
-     *   tx[0] = 命令高字节
-     *   tx[1] = 命令低字节
-     */
-    uint8_t tx[2];
-    uint8_t rx[2];
+    SPI_TypeDef *spi = hspi1.Instance;
+    uint32_t     guard;
 
-    tx[0] = (uint8_t)(KTH7823_CMD_READ_ANGLE >> 8);
-    tx[1] = (uint8_t)(KTH7823_CMD_READ_ANGLE & 0xFF);
+    /* 保证门限为 1 字节 (第一次调用时 Init 已设置, 这里幂等重设) */
+    SET_BIT(spi->CR2, SPI_RXFIFO_THRESHOLD);
 
-    /* CS 拉低 → 传输 → CS 拉高 */
+    /* 溢出恢复: 读 DR 再读 SR 可清 OVR 标志, 避免接收卡死 */
+    if (spi->SR & SPI_SR_OVR)
+    {
+        (void)spi->DR;
+        (void)spi->SR;
+    }
+
+    const uint8_t tx[2] =
+    {
+        (uint8_t)(KTH7823_CMD_READ_ANGLE >> 8),
+        (uint8_t)(KTH7823_CMD_READ_ANGLE & 0xFF)
+    };
+    uint8_t rx[2] = { 0u, 0u };
+
+    /* 确保 SPI 使能: 不再走 HAL, 必须自己维护 SPE
+     * (HAL_SPI_TransmitReceive 在部分路径结束时会关掉 SPE) */
+    if ((spi->CR1 & SPI_CR1_SPE) == 0u)
+    {
+        SET_BIT(spi->CR1, SPI_CR1_SPE);
+    }
+
     ENC_CS_LOW();
-    HAL_SPI_TransmitReceive(&hspi1, tx, rx, 2, HAL_MAX_DELAY);
+
+    for (uint32_t i = 0u; i < 2u; i++)
+    {
+        guard = ENC_SPI_GUARD;
+        while ((spi->SR & SPI_SR_TXE) == 0u)
+        {
+            if (--guard == 0u) { ENC_CS_HIGH(); return enc_last_raw; }
+        }
+        *(__IO uint8_t *)&spi->DR = tx[i];
+
+        guard = ENC_SPI_GUARD;
+        while ((spi->SR & SPI_SR_RXNE) == 0u)
+        {
+            if (--guard == 0u) { ENC_CS_HIGH(); return enc_last_raw; }
+        }
+        rx[i] = *(__IO uint8_t *)&spi->DR;
+    }
+
+    /* 等最后一拍 SCK 结束 (手册要求 CS 上升前 SCK 高电平 ≥120ns) */
+    guard = ENC_SPI_GUARD;
+    while (spi->SR & SPI_SR_BSY)
+    {
+        if (--guard == 0u) break;
+    }
+
     ENC_CS_HIGH();
 
     /* 拼回 16-bit */
     uint16_t raw = ((uint16_t)rx[0] << 8) | (uint16_t)rx[1];
+    raw &= KTH7823_ANGLE_MASK;
+
+    enc_last_raw = raw;
 
     /* 返回 16-bit 绝对角度 (0~65535 → 0°~360°) */
-    return raw & KTH7823_ANGLE_MASK;
+    return raw;
 }
 
 /* ===================================================================

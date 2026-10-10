@@ -74,6 +74,15 @@ float Angle_GetTheta(void);
  */
 float Angle_GetOffset(void);
 
+/**
+ * @brief 机械角速度 → 电角速度 (× 极对数)
+ *
+ * 供电流环 dq 解耦 / 反电动势前馈使用。
+ * @param mech_speed 机械角速度 (rad/s)
+ * @return 电角速度 (rad/s)
+ */
+float Angle_MechToElecSpeed(float mech_speed);
+
 #ifdef __cplusplus
 }
 #endif
